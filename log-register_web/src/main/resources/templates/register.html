@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base href="/"/>
+    <title>Title</title>
+</head>
+<body>
+    <fieldset>
+        <legend>注册界面</legend>
+        <form action="user/queryByusername" method="post">
+            用户名：<input type="text" name="username"/>
+            密码：<input type="password" name="password"/>
+            邮箱：<input type="text" name="email" id="email"/><input type="button" value="发送验证码" id="bto"/>
+            验证码：<input type="text" name="code"/>
+            <input type="submit" value="注册"/>
+        </form>
+    </fieldset>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.uploadifive.js"></script>
+
+    <script src="https://unpkg.com/wangeditor@3.1.1/release/wangEditor.min.js"></script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#bto").click(function () {
+            var email = $("#email").prop("value");
+            $.ajax({
+                url :"user/getCode",
+                data : "email="+email,
+                type:"POST",
+                success:function (data) {
+                    if(data!=null){
+                        alert("已发送验证码")
+                    }else{
+                        alert("发送失败")
+                    }
+                }
+            })
+        })
+    })
+</script>
+</body>
+</html>

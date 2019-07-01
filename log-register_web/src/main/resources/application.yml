@@ -1,0 +1,23 @@
+
+server:
+  port: 8080
+spring:
+  thymeleaf:
+    cache: false
+  mail:
+    protocol: smtp
+    host: smtp.sina.com
+    username: dgg768815928@sina.com
+    password: dgg1436258
+dubbo:
+  application:
+    name: user_web
+  registry:
+    address: zookeeper://192.168.101.130:2181
+  consumer:
+    check: false
+    timeout: 10000
+    retries: 3
+
+
+
